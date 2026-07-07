@@ -1,0 +1,62 @@
+﻿@page "/login"
+@rendermode InteractiveServer
+@using GalleryFrontend.Models
+@using GalleryFrontend.Services
+@inject OktaPolicyApiService OktaPolicyApiService
+@inject AuthStateService AuthState
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<div style="max-width: 400px;">
+    <div class="mb-3">
+        <label>Email</label>
+        <input class="form-control" @bind="loginRequest.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <input type="password" class="form-control" @bind="loginRequest.Password" />
+    </div>
+
+    <button class="btn btn-primary" @onclick="LoginAsync">Login</button>
+
+    @if (!string.IsNullOrWhiteSpace(errorMessage))
+    {
+        <p class="text-danger mt-3">@errorMessage</p>
+    }
+</div>
+
+<hr />
+
+<p>Test korisnici:</p>
+
+<ul>
+    <li><strong>FullAccess:</strong> full@test.com / Test123!</li>
+    <li><strong>ReadOnly:</strong> readonly@test.com / Test123!</li>
+</ul>
+
+@code {
+    private LoginRequest loginRequest = new()
+    {
+        Email = "full@test.com",
+        Password = "Test123!"
+    };
+
+    private string errorMessage = string.Empty;
+
+    private async Task LoginAsync()
+    {
+        var result = await OktaPolicyApiService.LoginAsync(loginRequest);
+
+        if (result == null)
+        {
+            errorMessage = "Neispravan login.";
+            return;
+        }
+
+        AuthState.SetLogin(result.AccessToken, result.RefreshToken, result.Role);
+
+        Navigation.NavigateTo("/oktapolicies");
+    }
+}

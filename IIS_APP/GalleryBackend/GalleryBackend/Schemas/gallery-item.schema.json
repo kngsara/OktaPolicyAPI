@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GalleryItem",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "imgurId",
+    "title",
+    "link",
+    "type",
+    "views",
+    "ups",
+    "downs",
+    "score",
+    "isAlbum",
+    "createdAt"
+  ],
+  "properties": {
+    "imgurId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "link": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+        "video/mp4",
+        "album"
+      ]
+    },
+    "views": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "ups": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "downs": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "score": {
+      "type": "integer"
+    },
+    "isAlbum": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

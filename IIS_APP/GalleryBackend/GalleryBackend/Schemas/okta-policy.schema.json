@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OktaPolicy",
+  "type": "object",
+  "required": [
+    "oktaId",
+    "name",
+    "type",
+    "status",
+    "priority",
+    "link",
+    "createdAt"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "oktaId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [ "ACTIVE", "INACTIVE" ]
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "link": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdatedAt": {
+      "type": [ "string", "null" ],
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "OktaBackend.Protos";
+
+package weather;
+
+service WeatherService {
+  rpc GetTemperaturesByCity (WeatherRequest) returns (WeatherResponse);
+}
+
+message WeatherRequest {
+  string city = 1;
+}
+
+message WeatherResponse {
+  repeated WeatherInfo results = 1;
+}
+
+message WeatherInfo {
+  string city = 1;
+  string temperature = 2;
+}

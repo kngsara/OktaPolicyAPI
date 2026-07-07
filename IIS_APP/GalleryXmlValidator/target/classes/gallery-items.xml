@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<galleryItems>
+    <galleryItem>
+        <imgurId>abc123</imgurId>
+        <title>Funny cat image</title>
+        <link>https://i.imgur.com/abc123.jpg</link>
+        <type>image/jpeg</type>
+        <views>1500</views>
+        <ups>250</ups>
+        <downs>5</downs>
+        <score>245</score>
+        <isAlbum>false</isAlbum>
+        <createdAt>2026-05-24T20:00:00</createdAt>
+    </galleryItem>
+
+    <galleryItem>
+        <imgurId>def456</imgurId>
+        <title>Nature gallery album</title>
+        <link>https://imgur.com/a/def456</link>
+        <type>album</type>
+        <views>9800</views>
+        <ups>1200</ups>
+        <downs>30</downs>
+        <score>1170</score>
+        <isAlbum>true</isAlbum>
+        <createdAt>2026-05-24T21:00:00</createdAt>
+    </galleryItem>
+</galleryItems>

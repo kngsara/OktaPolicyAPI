@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="oktaPolicies">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="oktaPolicy" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="oktaId" type="requiredString"/>
+                            <xs:element name="name" type="requiredString"/>
+                            <xs:element name="type" type="requiredString"/>
+                            <xs:element name="status" type="statusType"/>
+                            <xs:element name="priority" type="xs:int"/>
+                            <xs:element name="link" type="requiredString"/>
+                            <xs:element name="createdAt" type="xs:dateTime"/>
+                            <xs:element name="lastUpdatedAt" type="xs:dateTime" minOccurs="0"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="requiredString">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="statusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="INACTIVE"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
